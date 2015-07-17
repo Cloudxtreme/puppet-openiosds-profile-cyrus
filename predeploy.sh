@@ -10,4 +10,4 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-OPENIO-0
 EOF
 ) >/etc/yum.repos.d/openio-sds-unstable.repo
 yum clean all
-yum install openio-sds-mod-httpd-test201507171422.master openio-sds-mod-snmp-test201507171422.master openio-sds-common-test201507171422.master openio-sds-server-test201507171422.master
+yum -y install openio-sds-mod-httpd-test201507171422.master openio-sds-mod-snmp-test201507171422.master openio-sds-common-test201507171422.master openio-sds-server-test201507171422.master
