@@ -30,8 +30,13 @@ $GRIDINITCMD -S $GRIDINIT_SOCKET restart @meta2
 # Waiting for service to restart ...
 sleep 5
 
-# Install Cyrus
+### Install Cyrus
 yum -y install openio-sds-testing-release
-yum -y install cyrus-imapd-3.0pre cyrus-sasl
+yum -y install cyrus-imapd-3.0pre cyrus-sasl expect
 systemctl enable cyrus-imapd.service saslauthd.service
 systemctl start  cyrus-imapd.service saslauthd.service
+# Init openio mailbox
+CYRUS_PASSWD=$(mkpasswd -l 8 | tee /root/cyrus.passwd)
+echo $CYRUS_PASSWD | passwd --stdin cyrus
+echo "createmailbox user.openio"  | cyradm -u cyrus -w $CYRUS_PASSWD localhost
+echo "setquota user.openio 10000" | cyradm -u cyrus -w $CYRUS_PASSWD localhost
