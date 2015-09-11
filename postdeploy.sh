@@ -31,8 +31,8 @@ $GRIDINITCMD -S $GRIDINIT_SOCKET restart @meta2
 sleep 5
 
 ### Install Cyrus
-yum -y install openio-sds-testing-release
-yum -y install cyrus-imapd-3.0pre cyrus-sasl expect
+#yum -y install openio-sds-testing-release
+yum -y install cyrus-imapd cyrus-sasl expect
 systemctl enable cyrus-imapd.service saslauthd.service
 systemctl start  cyrus-imapd.service saslauthd.service
 # Init openio mailbox
